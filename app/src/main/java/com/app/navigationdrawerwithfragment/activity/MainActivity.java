@@ -2,7 +2,6 @@ package com.app.navigationdrawerwithfragment.activity;
 
 import android.animation.ValueAnimator;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -53,10 +52,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         };
         drawerLayout.setDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -76,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+                if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
                     getSupportFragmentManager().popBackStackImmediate();
                     showArrow(1, 0);
                 } else {
@@ -125,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentManager fm = getSupportFragmentManager();
         fm.beginTransaction()
                 .replace(R.id.fl_content, fragment)
-                .addToBackStack(fragmentClass.getName())
+                .addToBackStack(null)
                 .commit();
     }
 
