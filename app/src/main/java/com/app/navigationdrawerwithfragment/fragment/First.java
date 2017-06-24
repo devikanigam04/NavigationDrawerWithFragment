@@ -23,7 +23,7 @@ public class First extends Fragment {
         view.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity) getActivity()).startFragment(Detail.class);
+                ((MainActivity) getActivity()).startFragment(Detail.class, true);
             }
         });
         return view;

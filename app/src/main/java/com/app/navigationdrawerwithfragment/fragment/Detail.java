@@ -26,5 +26,6 @@ public class Detail extends Fragment {
     public void onResume() {
         super.onResume();
         ((MainActivity) getActivity()).showArrow(0, 1);
+        ((MainActivity) getActivity()).showBackArrow();
     }
 }
